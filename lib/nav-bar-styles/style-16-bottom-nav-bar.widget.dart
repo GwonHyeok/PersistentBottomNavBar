@@ -25,62 +25,53 @@ class BottomNavStyle16 extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               height: height,
-              child: ListView(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                scrollDirection: Axis.horizontal,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Expanded(
-                        child: IconTheme(
-                          data: IconThemeData(
-                              size: item.iconSize,
-                              color: isSelected
-                                  ? (item.activeColorSecondary == null
-                                      ? item.activeColorPrimary
-                                      : item.activeColorSecondary)
-                                  : item.inactiveColorPrimary == null
-                                      ? item.activeColorPrimary
-                                      : item.inactiveColorPrimary),
-                          child: isSelected
-                              ? item.icon
-                              : item.inactiveIcon ?? item.icon,
-                        ),
-                      ),
-                      item.title == null
-                          ? SizedBox.shrink()
-                          : Padding(
-                              padding: const EdgeInsets.only(top: 15.0),
-                              child: Material(
-                                type: MaterialType.transparency,
-                                child: FittedBox(
-                                    child: Text(
-                                  item.title!,
-                                  style: item.textStyle != null
-                                      ? (item.textStyle!.apply(
-                                          color: isSelected
-                                              ? (item.activeColorSecondary ==
-                                                      null
-                                                  ? item.activeColorPrimary
-                                                  : item.activeColorSecondary)
-                                              : item.inactiveColorPrimary))
-                                      : TextStyle(
-                                          color: isSelected
-                                              ? (item.activeColorSecondary ==
-                                                      null
-                                                  ? item.activeColorPrimary
-                                                  : item.activeColorSecondary)
-                                              : item.inactiveColorPrimary,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12.0),
-                                )),
-                              ),
-                            )
-                    ],
-                  )
+                  Expanded(
+                    child: IconTheme(
+                      data: IconThemeData(
+                          size: item.iconSize,
+                          color: isSelected
+                              ? (item.activeColorSecondary == null
+                                  ? item.activeColorPrimary
+                                  : item.activeColorSecondary)
+                              : item.inactiveColorPrimary == null
+                                  ? item.activeColorPrimary
+                                  : item.inactiveColorPrimary),
+                      child: isSelected
+                          ? item.icon
+                          : item.inactiveIcon ?? item.icon,
+                    ),
+                  ),
+                  item.title == null
+                      ? SizedBox.shrink()
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 0.0),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: FittedBox(
+                                child: Text(
+                              item.title!,
+                              style: item.textStyle != null
+                                  ? (item.textStyle!.apply(
+                                      color: isSelected
+                                          ? (item.activeColorSecondary == null
+                                              ? item.activeColorPrimary
+                                              : item.activeColorSecondary)
+                                          : item.inactiveColorPrimary))
+                                  : TextStyle(
+                                      color: isSelected
+                                          ? (item.activeColorSecondary == null
+                                              ? item.activeColorPrimary
+                                              : item.activeColorSecondary)
+                                          : item.inactiveColorPrimary,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12.0),
+                            )),
+                          ),
+                        )
                 ],
               ),
             ),
@@ -98,7 +89,7 @@ class BottomNavStyle16 extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Transform.translate(
-                  offset: Offset(0, -23),
+                  offset: Offset(0, -18),
                   child: Center(
                     child: Container(
                       width: height! - 5.0,
@@ -108,37 +99,22 @@ class BottomNavStyle16 extends StatelessWidget {
                         color: item.activeColorPrimary,
                         border:
                             Border.all(color: Colors.transparent, width: 5.0),
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(16.0),
                         boxShadow: this.navBarDecoration!.boxShadow,
                       ),
                       child: Container(
                         alignment: Alignment.center,
                         height: height,
-                        child: ListView(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Expanded(
-                                  child: IconTheme(
-                                    data: IconThemeData(
-                                      size: item.iconSize,
-                                      color: (item.activeColorSecondary == null
-                                          ? item.activeColorPrimary
-                                          : item.activeColorSecondary),
-                                    ),
-                                    child: isSelected
-                                        ? item.icon
-                                        : item.inactiveIcon ?? item.icon,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
+                        child: IconTheme(
+                          data: IconThemeData(
+                            size: item.iconSize,
+                            color: (item.activeColorSecondary == null
+                                ? item.activeColorPrimary
+                                : item.activeColorSecondary),
+                          ),
+                          child: isSelected
+                              ? item.icon
+                              : item.inactiveIcon ?? item.icon,
                         ),
                       ),
                     ),
